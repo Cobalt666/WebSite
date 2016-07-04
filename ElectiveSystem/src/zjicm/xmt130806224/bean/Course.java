@@ -7,9 +7,23 @@ public class Course {
 	private int limitcount;//限选人数
 	private String period;
 	private String starttime;
-	private int credit;//学分
+	private float credit;//学分
 	private String category;
+	private String room;
+	private int rest;
 	
+	public String getRoom() {
+		return room;
+	}
+	public void setRoom(String room) {
+		this.room = room;
+	}
+	public int getRest() {
+		return rest;
+	}
+	public void setRest(int rest) {
+		this.rest = rest;
+	}
 	public String getTeacher() {
 		return teacher;
 	}
@@ -52,10 +66,10 @@ public class Course {
 	public void setStarttime(String starttime) {
 		this.starttime = starttime;
 	}
-	public int getCredit() {
+	public float getCredit() {
 		return credit;
 	}
-	public void setCredit(int credit) {
+	public void setCredit(float credit) {
 		this.credit = credit;
 	}
 	

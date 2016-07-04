@@ -25,6 +25,7 @@ a{color:#000}
     			<th>限制人数</th>
     			<th>所含学分</th>
     			<th>所属分类</th>
+    			<th>剩余人数</th>
     			<th>退选</th>
     		</tr>
   			</thead>
@@ -33,11 +34,12 @@ a{color:#000}
     		<tr class="text-c">
     			<td><s:property value="#course.name"/></td>
     			<td><s:property value="#course.teacher"/></td>
-    			<td><s:property value="#course.period"/></td>
+    			<td><s:property value="#course.period"/>，<s:property value="#course.room"/></td>
     			<td><s:property value="#course.starttime"/></td>
     			<td><s:property value="#course.limitcount"/></td>
     			<td><s:property value="#course.credit"/></td>
     			<td><s:property value="#course.category"/></td>
+    			<td><s:property value="#course.rest"/></td>
     			<td style="text-align:center;">
     				<a href="deleteElect?courseid=<s:property value="#course.id"/>" onclick="return confirm('确认退选?')">
     					<i class="Hui-iconfont Hui-iconfont-close2"></i>

@@ -4,6 +4,7 @@
 <html>
 <head>
 <title>选修课选课系统</title>
+
 </head>
 <frameset rows="50px,*" border="0">
 	<frame src="top.jsp" name="top" scrolling="no" noresize="noresize">

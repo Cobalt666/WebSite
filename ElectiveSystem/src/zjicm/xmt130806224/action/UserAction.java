@@ -38,6 +38,9 @@ public class UserAction extends ActionSupport {
     private HttpSession session;
     private ServletContext application;
     
+    private String queryCate;
+	private String queryString;
+    
     //upload-->
     private File file;
 	private String fileFileName;
@@ -48,6 +51,22 @@ public class UserAction extends ActionSupport {
 		return number;
 	}
 	
+	public String getQueryCate() {
+		return queryCate;
+	}
+
+	public void setQueryCate(String queryCate) {
+		this.queryCate = queryCate;
+	}
+
+	public String getQueryString() {
+		return queryString;
+	}
+
+	public void setQueryString(String queryString) {
+		this.queryString = queryString;
+	}
+
 	public int getCourseid() {
 		return courseid;
 	}
@@ -252,17 +271,35 @@ public class UserAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
-	public String choose() {
+	public String queryCoursesByUser() throws SQLException {
 		this.request = ServletActionContext.getRequest();
         this.session = this.request.getSession();
-		crud.addAnElect(Integer.parseInt(this.session.getAttribute("number").toString()), courseid);
+		courses = crud.queryCourses(queryCate, queryString);
+		
 		return SUCCESS;
+	}
+	
+	public String choose() throws NumberFormatException, SQLException {
+		this.request = ServletActionContext.getRequest();
+        this.session = this.request.getSession();
+        String s = crud.limitedReason(courseid, Integer.parseInt(this.session.getAttribute("number").toString()));
+        if(s.equals("Allowed")){
+        	crud.addAnElect(Integer.parseInt(this.session.getAttribute("number").toString()), courseid);
+    		crud.decreaseCourseRest(courseid);
+    		this.session.setAttribute("msg", null);
+        }else{
+        	this.session.setAttribute("msg", s);
+        	System.out.println(s);
+        }
+        return SUCCESS;
+		
 	}
 	
 	public String deleteElect() {
 		this.request = ServletActionContext.getRequest();
         this.session = this.request.getSession();
 		crud.deleteElect(courseid, Integer.parseInt(this.session.getAttribute("number").toString()));
+		crud.increaseCourseRest(courseid);
 		return SUCCESS;
 	}
 	

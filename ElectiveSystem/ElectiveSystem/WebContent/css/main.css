@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/* CSS Document */
+html {
+	height: 100%;
+	width: auto;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	height: 100%;
+	width: auto;
+	margin: 0;
+	padding: 0;
+	color: #0F0F0F
+}
+
+html, body, h1, h2, h3, h4, h5, h6, hr, p, iframe, dl, dt, dd, ul, ol,
+	li, pre, form, button, input, textarea, th, td, fieldset {
+	margin: 0;
+	padding: 0
+}
+
+ul, ol, dl {
+	list-style-type: none
+}
+
+body {
+	padding: 50px;
+	background-image: url(../img/light-008.gif);
+	background-attachment: fixed;
+	background-position: 10% bottom;
+	word-wrap: break-word;
+	font: 14px/200% "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", tahoma,
+		arial, simsun, "宋体";
+}
+
+table {
+	empty-cells: show;
+	background-color: transparent;
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+.line {
+	font-size: 0px;
+	line-height: 0px;
+	border-top: solid 1px #ccc;
+	float: none;
+	padding: 10px;
+	width: 80%
+}

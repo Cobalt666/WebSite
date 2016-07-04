@@ -345,7 +345,7 @@ public class Crud {
 	
 	public List<User> queryUsers(String cate, String q) throws SQLException {
 		Connection conn = DB.createConn();
-		String sql = "select * from tb_user where " + cate + "like'%" + q + "%' ";
+		String sql = "select * from tb_user where " + cate + " like '%" + q + "%' ";
 		PreparedStatement ps = DB.prepare(conn, sql);
 		List<User> users = new ArrayList<User>();
 		try {
@@ -395,7 +395,7 @@ public class Crud {
 	//课程信息管理：
 	public void addACourse(Course course) {
 		Connection conn = DB.createConn();
-		String sql = "insert into tb_course(name, teacher, limitcount, period, starttime, credit, category) values (?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into tb_course(name, teacher, limitcount, period, starttime, credit, category, room, rest) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		PreparedStatement ps = DB.prepare(conn, sql);
 		try {
 			ps.setString(1, course.getName());
@@ -403,8 +403,10 @@ public class Crud {
 			ps.setInt(3, course.getLimitcount());
 			ps.setString(4, course.getPeriod());
 			ps.setString(5, course.getStarttime());
-			ps.setInt(6, course.getCredit());
+			ps.setFloat(6, course.getCredit());
 			ps.setString(7, course.getCategory());
+			ps.setString(8, course.getRoom());
+			ps.setInt(9, course.getLimitcount());//initial
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -430,7 +432,7 @@ public class Crud {
 	public void updateCourse(Course course) {
 		Connection conn = DB.createConn();
 		String sql = "update tb_course set name = ?, teacher = ?, limitcount = ?,"
-				+ "starttime = ?, period = ?, credit = ?, category = ? where id = ?";
+				+ "starttime = ?, period = ?, credit = ?, category = ?, room = ? where id = ?";
 		PreparedStatement ps = DB.prepare(conn, sql);
 		try {
 			ps.setString(1, course.getName());
@@ -438,9 +440,42 @@ public class Crud {
 			ps.setInt(3, course.getLimitcount());
 			ps.setString(4, course.getStarttime());
 			ps.setString(5, course.getPeriod());
-			ps.setInt(6, course.getCredit());
+			ps.setFloat(6, course.getCredit());
 			ps.setString(7, course.getCategory());
-			ps.setInt(8, course.getId());
+			ps.setString(8, course.getRoom());
+			ps.setInt(9, course.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DB.close(ps);
+		DB.close(conn);
+	}
+	
+	public void decreaseCourseRest(int courseid) {
+		Connection conn = DB.createConn();
+		String sql = "update tb_course set rest = ? where id = ?";
+		Course temp = getACourseById(courseid);
+		PreparedStatement ps = DB.prepare(conn, sql);
+		try {
+			ps.setInt(1, (temp.getRest()-1));
+			ps.setInt(2, courseid);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DB.close(ps);
+		DB.close(conn);
+	}
+	
+	public void increaseCourseRest(int courseid) {
+		Connection conn = DB.createConn();
+		String sql = "update tb_course set rest = ? where id = ?";
+		Course temp = getACourseById(courseid);
+		PreparedStatement ps = DB.prepare(conn, sql);
+		try {
+			ps.setInt(1, (temp.getRest()+1));
+			ps.setInt(2, courseid);
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -466,8 +501,10 @@ public class Crud {
 				c.setTeacher(rs.getString("teacher"));
 				c.setPeriod(rs.getString("period"));
 				c.setStarttime(rs.getString("starttime"));
-				c.setCredit(rs.getInt("credit"));
+				c.setCredit(rs.getFloat("credit"));
 				c.setCategory(rs.getString("category"));
+				c.setRoom(rs.getString("room"));
+				c.setRest(rs.getInt("rest"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -479,7 +516,7 @@ public class Crud {
 	
 	public List<Course> queryCourses(String cate, String q) throws SQLException {
 		Connection conn = DB.createConn();
-		String sql = "select * from tb_course where " + cate + "like'%" + q + "%' ";
+		String sql = "select * from tb_course where " + cate + " like '%" + q + "%' ";
 		PreparedStatement ps = DB.prepare(conn, sql);
 		List<Course> courses = new ArrayList<Course>();
 		try {
@@ -493,8 +530,10 @@ public class Crud {
 				c.setTeacher(rs.getString("teacher"));
 				c.setPeriod(rs.getString("period"));
 				c.setStarttime(rs.getString("starttime"));
-				c.setCredit(rs.getInt("credit"));
+				c.setCredit(rs.getFloat("credit"));
 				c.setCategory(rs.getString("category"));
+				c.setRoom(rs.getString("room"));
+				c.setRest(rs.getInt("rest"));
 				courses.add(c);
 			}
 		} catch (SQLException e) {
@@ -522,8 +561,10 @@ public class Crud {
 				c.setTeacher(rs.getString("teacher"));
 				c.setPeriod(rs.getString("period"));
 				c.setStarttime(rs.getString("starttime"));
-				c.setCredit(rs.getInt("credit"));
+				c.setCredit(rs.getFloat("credit"));
 				c.setCategory(rs.getString("category"));
+				c.setRoom(rs.getString("room"));
+				c.setRest(rs.getInt("rest"));
 				courses.add(c);
 			}
 		} catch (SQLException e) {
@@ -549,6 +590,40 @@ public class Crud {
 		}
 		DB.close(ps);
 		DB.close(conn);
+	}
+	
+	public String limitedReason (int courseid, int studentnum) throws SQLException {
+		Course course = getACourseById(courseid);
+		List<Elect> elects = getAllElectByNumber(studentnum);
+		if(elects.size()==3){
+			return "选课数目已超！";
+		}else if(course.getRest()==0) {
+			return "选课人数已满！";
+		}
+		return "Allowed";
+	}
+	
+	public Elect getAElectById(int id) {
+		Connection conn = DB.createConn();
+		String sql = "select * from tb_elect where id = ?";
+		PreparedStatement ps = DB.prepare(conn, sql);
+		Elect elect = null;
+		try {
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+		
+			if(rs.next()) {
+				elect = new Elect();
+				elect.setId(rs.getInt("id"));
+				elect.setStudentnum(rs.getInt("studentnum"));
+				elect.setCourseid(rs.getInt("courseid"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DB.close(ps);
+		DB.close(conn);
+		return elect;
 	}
 	
 	public List<Elect> getAllElectByNumber(int studentnum) throws SQLException {

@@ -97,7 +97,7 @@
             <result>/list-courses.jsp</result>
         </action>
          <action name="queryCourses" class="zjicm.xmt130806224.action.AdminAction" method="queryCourses">
-            <result type="redirectAction">listCourses</result>
+            <result>/list-courses.jsp</result>
         </action>
         
         <!-- user function: (admin)-->
@@ -121,7 +121,7 @@
             <result>/list-users.jsp</result>
         </action>
          <action name="queryUsers" class="zjicm.xmt130806224.action.AdminAction" method="queryUsers">
-            <result type="redirectAction">listUsers</result>
+            <result>/list-users.jsp</result>
         </action>
         
         <action name="updateInputUser" class="zjicm.xmt130806224.action.AdminAction" method="updateInputUser">
@@ -154,6 +154,9 @@
         </action>
         <action name="deleteElect" class="zjicm.xmt130806224.action.UserAction" method="deleteElect">
             <result type="redirectAction" >chooseACourse</result>
+        </action>
+        <action name="queryCoursesByUser" class="zjicm.xmt130806224.action.UserAction" method="queryCoursesByUser">
+            <result>/choose-course.jsp</result>
         </action>
         <action name="showMyCourse" class="zjicm.xmt130806224.action.UserAction" method="showMyCourse">
             <result>/mycourse.jsp</result>

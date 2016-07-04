@@ -16,6 +16,19 @@ a{color:#000}
 <body>
 <div class="form-box-large" style="width:auto">
 	<h3>用户列表>></h3>
+	<form action="queryUsers" method="post" >
+	<input class="input-search radius" placeholder="搜索内容" name="queryString" >
+        <span class="select-box-small radius">
+			<select id="institute"  class="select-small" size="1" name="queryCate">
+				<option value="" selected>----请选择查询类型----</option>
+				<option value="name">按名称</option>
+				<option value="number">按编号</option>
+				<option value="gender">按性别</option>
+				<option value="cate">按类型</option>
+			</select>
+		</span>
+        <input class="btn btn-primary radius" value="开始搜索" type="submit" />
+    </form><br /><br />
 		<table class="table table-border table-bordered table-hover table-striped radius">
   			<thead>
     		<tr>

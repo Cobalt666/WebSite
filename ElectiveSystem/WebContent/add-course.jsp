@@ -35,6 +35,10 @@
                         <td><input name="course.period" type="text" class="input-text radius" ID="course.period" required /></td>
                     </tr>
                     <tr>
+                        <td>上课教室：</td>
+                        <td><input name="course.room" type="text" class="input-text radius" ID="course.room" /></td>
+                    </tr>
+                    <tr>
                         <td>开课时间：</td>
                         <td><input name="course.starttime" type="date" class="input-text radius" ID="course.starttime" required /></td>
                     </tr>

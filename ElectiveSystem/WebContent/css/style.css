@@ -431,6 +431,25 @@ table th {
 	width: 100%
 }
 
+.select-box-small {
+	height: 34px;
+	padding: 4px 5px;
+	border: solid 1px #ddd;
+	box-sizing: border-box;
+	vertical-align: middle;
+	width: auto;
+	display: inline-block
+}
+
+.select-small {
+	border: solid 1px #ddd;
+	box-sizing: border-box;
+	cursor: pointer;
+	line-height: normal;
+	font-weight: normal;
+	width: auto
+}
+
 .error {
 	color: red;
 	font-weight: bold;

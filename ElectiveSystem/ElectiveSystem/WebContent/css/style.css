@@ -1,0 +1,500 @@
+﻿@charset "UTF-8";
+/* CSS Document */
+html {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	color: #0F0F0F
+}
+
+textarea, input, button, select {
+	font-size: inherit;
+	line-height: inherit;
+	color: inherit;
+	font-family: inherit;
+	outline: 0;
+}
+
+textarea {
+	overflow: auto;
+	resize: none;
+}
+
+body {
+	background-image: url(../img/light-008.gif);
+	background-attachment: fixed;
+	background-position: 10% bottom;
+	word-wrap: break-word;
+	font: 14px/200% "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", tahoma,
+		arial, simsun, "宋体";
+}
+
+textarea, input, select {
+	font-family: "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", tahoma,
+		arial, simsun, "宋体";
+	font-size: 12px;
+}
+
+.radius {
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+.input-text, .btn, .input-text.size-M, .btn.size-M {
+	font-size: 14px;
+	height: 31px;
+	line-height: 1.42857;
+	padding: 4px
+} /*默认为M，可以不写，可以理解为：均码*/
+.btn, .btn.size-M {
+	padding: 4px 12px
+}
+
+.input-text.size-MINI, .btn.size-MINI {
+	font-size: 12px;
+	height: 23px;
+	padding: 1px 2px;
+	line-height: 1.42857
+} /*迷你*/
+.btn.size-MINI {
+	padding: 1px 4px
+}
+
+.input-text.size-S, .btn.size-S {
+	font-size: 12px;
+	height: 27px;
+	padding: 3px;
+	line-height: 1.42857;
+} /*小*/
+.btn.size-S {
+	padding: 3px 8px
+}
+
+.input-text.size-L, .btn.size-L {
+	font-size: 16px;
+	height: 41px;
+	padding: 8px
+} /*大*/
+.btn.size-L {
+	padding: 8px 16px
+}
+
+.input-text.size-XL, .btn.size-XL {
+	font-size: 18px;
+	height: 48px;
+	padding: 10px
+} /*特大*/
+.btn.size-XL {
+	padding: 10px 24px
+}
+
+.input-check {
+	vertical-align: middle;
+	font-size: 16px;
+	height: 41px;
+	border: solid 1px #ddd;
+}
+
+.input-search {
+	vertical-align: middle;
+	font-size: 12px;
+	height: 23px;
+	line-height: 1.42857;
+	padding: 4px;
+	border: solid 1px #ddd;
+}
+/*3.4.1 input,textarea 文本域 文本区域*/
+/*默认状态*/
+.input-text, .textarea {
+	box-sizing: border-box;
+	border: solid 1px #ddd;
+	width: 100%;
+	-webkit-transition: all 0.2s linear 0s;
+	-moz-transition: all 0.2s linear 0s;
+	-o-transition: all 0.2s linear 0s;
+	transition: all 0.2s linear 0s
+}
+
+.textarea {
+	height: 100px;
+	resize: none;
+	font-size: 14px;
+	padding: 4px
+}
+
+.textarea-numberbar {
+	position: absolute;
+	right: 20px;
+	bottom: 5px;
+	z-index: 1;
+	margin-bottom: 0
+}
+
+.textarea-length {
+	font-style: normal
+}
+
+.input-text:hover, .textarea:hover {
+	border: solid 1px #3bb4f2
+}
+/*得到焦点后*/
+.input-text.focus, textarea.focus {
+	border: solid 1px #0f9ae0 \9;
+	border-color: rgba(82, 168, 236, 0.8);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px
+		rgba(102, 175, 233, 0.6)
+}
+/*不可点击*/
+.input-text.disabled, .textarea.disabled, .input-text.disabled.focus,
+	.textarea.disabled.focus {
+	background-color: #ededed;
+	cursor: default;
+	border-color: #ddd;
+	-webkit-box-shadow: inset 0 2px 2px #e8e7e7;
+	-moz-box-shadow: inset 0 2px 2px #e8e7e7;
+	box-shadow: inset 0 2px 2px #e8e7e7
+}
+
+/*按钮*/
+.btn {
+	display: inline-block;
+	box-sizing: border-box;
+	cursor: pointer;
+	text-align: center;
+	font-weight: 400;
+	white-space: nowrap;
+	vertical-align: middle;
+	-moz-padding-start: npx;
+	-moz-padding-end: npx;
+	border: solid 1px #ddd;
+	background-color: #fff;
+	width: auto;
+	*zoom: 1;
+	*overflow: visible;
+	-webkit-transition: background-color .1s linear;
+	-moz-transition: background-color .1s linear;
+	-o-transition: background-color .1s linear;
+	transition: background-color .1s linear;
+}
+
+a {
+	text-decoration: none
+}
+
+a.btn:hover, a.btn:focus, a.btn:active, a.btn.active, a.btn.disabled, a.btn[disabled]
+	{
+	text-decoration: none
+}
+
+.btn:active, .btn.active {
+	background-color: #ccc
+}
+
+.btn:first-child {
+	*margin-left: 0
+}
+
+.btn.active, .btn:active {
+	-moz-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.125) inset;
+	-webkit-box-shadow: 0 1px 8px rgba(0, 0, 0, 0.125) inset;
+	box-shadow: 0 1px 8px rgba(0, 0, 0, 0.125) inset;
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: #5a98de;
+	border-color: #5a98de
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active,
+	.btn-primary.active {
+	color: #fff;
+	background-color: #0a6999;
+	border-color: #0a6999
+}
+
+.left {
+	background-color: #D0E6FD;
+	float: left;
+	width: 400px;
+	height: 400px;
+}
+
+.right {
+	background-color: #fff;
+	float: left;
+	width: 400px;
+	height: 400px;
+}
+
+.box {
+	width: 400px;
+	height: auto;
+	-moz-box-shadow: 5px 5px 2px #cccccc;
+	box-shadow: 5px 5px 2px #cccccc;
+	margin: 0 auto;
+	margin-top: 150px;
+}
+
+.form-box {
+	width: 800px;
+	height: auto;
+	margin: 0 auto;
+	margin-top: 50px;
+	background-color: #FFFFFF;
+	padding: 30px;
+	border: solid #CCCCCC 1px;
+}
+
+.form-box-auto {
+	width: auto;
+	height: auto;
+	margin: 0 auto;
+	margin-top: 50px;
+	background-color: #FFFFFF;
+	padding: 30px;
+	border: solid #CCCCCC 1px;
+}
+
+.form-box-small {
+	width: 500px;
+	height: auto;
+	margin: 0 auto;
+	margin-top: 50px;
+	background-color: #FFFFFF;
+	padding: 30px;
+	border: solid #CCCCCC 1px;
+}
+
+.form-box-large {
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+	margin-top: 50px;
+	background-color: #FFFFFF;
+	padding: 20px;
+	border: solid #CCCCCC 1px;
+}
+
+.line {
+	font-size: 0px;
+	line-height: 0px;
+	border-top: solid 1px #eee;
+	float: none;
+	width: 80%
+}
+
+/*默认table*/
+table {
+	width: 100%;
+	empty-cells: show;
+	background-color: transparent;
+	border-collapse: collapse;
+	border-spacing: 0
+}
+
+table th {
+	text-align: left;
+	font-weight: 400
+}
+/*带水平线*/
+.table th {
+	font-weight: bold
+}
+
+.table th, .table td {
+	padding: 8px;
+	line-height: 20px
+}
+
+.table td {
+	text-align: left
+}
+
+.table tbody tr.success>td {
+	background-color: #dff0d8
+}
+
+.table tbody tr.error>td {
+	background-color: #f2dede
+}
+
+.table tbody tr.warning>td {
+	background-color: #fcf8e3
+}
+
+.table tbody tr.info>td {
+	background-color: #d9edf7
+}
+
+.table tbody+tbody {
+	border-top: 2px solid #ddd
+}
+
+.table .table {
+	background-color: #fff
+}
+
+/*带横向分割线*/
+.table-border {
+	border-top: 1px solid #ddd
+}
+
+.table-border th, .table-border td {
+	border-bottom: 1px solid #ddd
+}
+
+/*th带背景*/
+.table-bg thead th {
+	background-color: #F5FAFE
+}
+/*带外边框*/
+.table-bordered {
+	border: 1px solid #ddd;
+	border-collapse: separate;
+	*border-collapse: collapse;
+	border-left: 0
+}
+
+.table-bordered th, .table-bordered td {
+	border-left: 1px solid #ddd
+}
+
+.table-border.table-bordered {
+	border-bottom: 0
+}
+
+/*奇数行背景设为浅灰色*/
+.table-striped tbody>tr:nth-child(odd)>td, .table-striped tbody>tr:nth-child(odd)>th
+	{
+	background-color: #f9f9f9
+}
+/*竖直方向padding缩减一半*/
+.table-condensed th, .table-condensed td {
+	padding: 4px 5px
+}
+/*鼠标悬停样式*/
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+	background-color: #f5f5f5
+}
+/*悬停在行*/
+.table tbody tr.active, .table tbody tr.active>td, .table tbody tr.active>th,
+	.table tbody tr .active {
+	background-color: #F5F5F5 !important
+}
+
+/*表格文字对齐方式，默认是居左对齐*/
+.table .text-c th, .table .text-c td {
+	text-align: center
+} 
+
+.table .text-r th, .table .text-r td {
+	text-align: right
+}
+
+.table th.text-l, .table td.text-l {
+	text-align: left !important
+} 
+
+.table th.text-c, .table td.text-c {
+	text-align: center !important
+} 
+
+.table th.text-r, .table td.text-r {
+	text-align: right !important
+} 
+
+.select-box {
+	height: 31px;
+	padding: 4px 5px;
+	border: solid 1px #ddd;
+	box-sizing: border-box;
+	vertical-align: middle;
+	width: 100%;
+	display: inline-block
+}
+
+.select {
+	border: solid 1px #ddd;
+	box-sizing: border-box;
+	cursor: pointer;
+	line-height: normal;
+	font-weight: normal;
+	width: 100%
+}
+
+.error {
+	color: red;
+	font-weight: bold;
+	float: left
+}
+
+.avatar {
+	display: inline-block;
+	position: relative;
+	overflow: hidden
+}
+
+.avatar img {
+	display: block
+}
+
+.avatar.radius, .avatar.radius img {
+	border-radius: 50%
+}
+
+.avatar, .avatar img {
+	width: 100px;
+	height: 100px
+}
+
+.avatar.size-MINI {
+	width: 16px;
+	height: 16px
+}
+
+.avatar.size-S, .avatar.size-S img {
+	width: 24px;
+	height: 24px
+}
+
+.avatar.size-M, .avatar.size-M img {
+	width: 32px;
+	height: 32px
+} 
+
+.avatar.size-L, .avatar.size-L img {
+	width: 40px;
+	height: 40px
+}
+
+.avatar.size-XL, .avatar.size-XL img {
+	width: 64px;
+	height: 64px
+}
+
+.avatar.size-XXL, .avatar.size-XXL img {
+	width: 100px;
+	height: 100px
+}
+
+.avatar.size-XXXL, .avatar.size-XXXL img {
+	width: 128px;
+	height: 128px
+}
+
+.prolong {
+	width: 100%;
+}
+
+.bold-icon {
+	font-weight:bold;
+}

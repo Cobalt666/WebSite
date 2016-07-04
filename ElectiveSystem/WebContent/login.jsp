@@ -11,9 +11,7 @@
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
 <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
 <script src="js/custom.js"></script>
-<s:if test="message != null"> 
-<script language="JavaScript" type="text/javascript">alert('<s:property value="message" />');</script>
-</s:if>
+
 
 <script language="JavaScript" type="text/javascript">
 	function ChangeDiv(divId, divName, count) {
