@@ -576,6 +576,37 @@ public class Crud {
 		return courses;
 	}
 	
+	public List<Course> getAllNotEmptyCourses() throws SQLException {
+		Connection conn = DB.createConn();
+		String sql = "select * from tb_course where rest > 0";
+		PreparedStatement ps = DB.prepare(conn, sql);
+		List<Course> courses = new ArrayList<Course>();
+		try {
+			ResultSet rs = ps.executeQuery();
+			Course c = null;
+			while(rs.next()) {
+				c = new Course();
+				c.setId(rs.getInt("id"));
+				c.setName(rs.getString("name"));
+				c.setLimitcount(rs.getInt("limitcount"));
+				c.setTeacher(rs.getString("teacher"));
+				c.setPeriod(rs.getString("period"));
+				c.setStarttime(rs.getString("starttime"));
+				c.setCredit(rs.getFloat("credit"));
+				c.setCategory(rs.getString("category"));
+				c.setRoom(rs.getString("room"));
+				c.setRest(rs.getInt("rest"));
+				courses.add(c);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw(e);
+		}
+		DB.close(ps);
+		DB.close(conn);
+		return courses;
+	}
+	
 	//选课
 	public void addAnElect (int studentnum, int courseid) {
 		Connection conn = DB.createConn();

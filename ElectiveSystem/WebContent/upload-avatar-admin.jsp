@@ -18,7 +18,7 @@
         <form id="signupForm" method="post" action="uploadAvatarByAdmin" enctype="multipart/form-data"
          style="background-color: #fff; padding: 20px">
 			<input name="userid" value="<%=request.getParameter("userid").toString() %>" type="hidden">
-            <input name="file" id="file" type="file" onchange="javascript:setImagePreview();">
+            <input name="file" id="file" type="file" onchange="javascript:setImagePreview();"><br>
 
             <br><div id="localImag"><img id="preview" width=-1 height=-1 style="diplay:none" /><br></div>
             

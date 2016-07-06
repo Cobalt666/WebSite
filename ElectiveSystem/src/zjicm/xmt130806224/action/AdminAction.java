@@ -123,6 +123,20 @@ public class AdminAction extends ActionSupport {
 	}
 	
 	//action method:
+	public String allowSelect() {
+		this.request = ServletActionContext.getRequest();
+        this.session = this.request.getSession();
+        this.session.setAttribute("allow", "yes");
+        return SUCCESS;
+	}
+	
+	public String disallowSelect() {
+		this.request = ServletActionContext.getRequest();
+        this.session = this.request.getSession();
+        this.session.setAttribute("allow", "no");
+        return SUCCESS;
+	}
+	
 	public String uploadAvatarByAdmin() {
 		this.request = ServletActionContext.getRequest();
         this.session = this.request.getSession();

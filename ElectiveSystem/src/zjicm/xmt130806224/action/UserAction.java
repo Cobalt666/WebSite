@@ -279,6 +279,11 @@ public class UserAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	public String queryCoursesByUserNotEmpty() throws SQLException {
+        courses = crud.getAllNotEmptyCourses();
+        return SUCCESS;
+	}
+	
 	public String choose() throws NumberFormatException, SQLException {
 		this.request = ServletActionContext.getRequest();
         this.session = this.request.getSession();

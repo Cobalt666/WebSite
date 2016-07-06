@@ -44,12 +44,20 @@
 				<li><a href="add-course.jsp" target="main">添加新课</a></li>
 				<li><a href="listCourses" target="main">课程管理</a></li>
 				<li><a href="listUsers" target="main">用户管理</a></li>
+				<li><a href="allow-select.jsp" target="main">选课开放</a></li>
+				
 				</s:if>
 				<s:elseif test="#session.cate=='教师'.toString()">
 				<li><a href="add-course.jsp" target="main">添加新课</a></li>
 				</s:elseif>
 				<s:else>
-				<li><a href="chooseACourse" target="main">选择课程</a></li>
+				<%
+				if (null != session.getAttribute("allow")){
+					if(session.getAttribute("allow").toString().equals("yes"))
+						out.print("<li><a href=\"chooseACourse\" target=\"main\">选择课程</a></li>");
+				}
+				%>
+				<!-- <li><a href="chooseACourse" target="main">选择课程</a></li> -->
 				<li><a href="showMyCourse" target="main">我的课程</a></li>
 				</s:else>
 			</ul>

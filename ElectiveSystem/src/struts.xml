@@ -99,7 +99,12 @@
          <action name="queryCourses" class="zjicm.xmt130806224.action.AdminAction" method="queryCourses">
             <result>/list-courses.jsp</result>
         </action>
-        
+        <action name="allowSelect" class="zjicm.xmt130806224.action.AdminAction" method="allowSelect">
+            <result>/allow-select.jsp</result>
+        </action>
+        <action name="disallowSelect" class="zjicm.xmt130806224.action.AdminAction" method="disallowSelect">
+            <result>/allow-select.jsp</result>
+        </action>
         <!-- user function: (admin)-->
         <action name="uploadAvatarByAdmin" class="zjicm.xmt130806224.action.AdminAction" method="uploadAvatarByAdmin">
             <interceptor-ref name="fileUpload" />
@@ -156,6 +161,9 @@
             <result type="redirectAction" >chooseACourse</result>
         </action>
         <action name="queryCoursesByUser" class="zjicm.xmt130806224.action.UserAction" method="queryCoursesByUser">
+            <result>/choose-course.jsp</result>
+        </action>
+        <action name="queryCoursesByUserNotEmpty" class="zjicm.xmt130806224.action.UserAction" method="queryCoursesByUserNotEmpty">
             <result>/choose-course.jsp</result>
         </action>
         <action name="showMyCourse" class="zjicm.xmt130806224.action.UserAction" method="showMyCourse">
