@@ -80,15 +80,7 @@
                         <td>联系方式：</td>
                         <td><input name="user.phone" value="<s:property value="user.phone"/>" type="text" class="input-text radius" ID="user.phone" required /></td>
                     </tr>
-                    <tr>
-                        <td>选择类别：</td>
-                        <td>
-                        	<div style="text-align:center;padding:3px">
-								<input type="radio" name="user.cate" value="教师" required>教师 
-								<input type="radio" name="user.cate" value="学生">学生 
-							</div>
-						</td>
-                    </tr>
+                   
                     <tr>
                         <td>选择院系：</td>
                         <td>

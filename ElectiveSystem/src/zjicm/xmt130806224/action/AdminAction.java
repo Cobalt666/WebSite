@@ -126,18 +126,22 @@ public class AdminAction extends ActionSupport {
 	public String allowSelect() {
 		this.request = ServletActionContext.getRequest();
         this.session = this.request.getSession();
-        this.session.setAttribute("allow", "yes");
+        this.application = session.getServletContext();
+        this.application.setAttribute("allow", "yes");
         return SUCCESS;
 	}
 	
 	public String disallowSelect() {
 		this.request = ServletActionContext.getRequest();
         this.session = this.request.getSession();
-        this.session.setAttribute("allow", "no");
+        this.application = session.getServletContext();
+        this.application.setAttribute("allow", "no");
         return SUCCESS;
 	}
 	
+	
 	public String uploadAvatarByAdmin() {
+		//部分代码参考自传智播客J2EE教程
 		this.request = ServletActionContext.getRequest();
         this.session = this.request.getSession();
         String destPath = ServletActionContext.getServletContext().getRealPath("/upload/avatars");

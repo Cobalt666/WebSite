@@ -80,7 +80,7 @@
 	<script type="text/javascript">
 		/* 参考自http://www.h-ui.net/Hui-4.12-toTop.shtml */
 		var $backToTopEle = $(
-				'<a href="javascript:void(0)" class="Hui-iconfont tools-right toTop" title="返回顶部" alt="返回顶部" style="display:none">&#xe684;</a>')
+				'<a href="javascript:void(0)" class="Hui-iconfont toTop" title="返回顶部" alt="返回顶部" style="display:none">&#xe684;</a>')
 				.appendTo($("body")).click(function() {
 					$("html, body").animate({
 						scrollTop : 0

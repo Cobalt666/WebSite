@@ -11,7 +11,7 @@
 <body>
 <div class="form-box-small">
 <%
-				if (null == session.getAttribute("allow")||session.getAttribute("allow").toString().equals("no")){
+				if (null == application.getAttribute("allow")||application.getAttribute("allow").toString().equals("no")){
 					out.print("<h4>现在未开放选课</h4>");
 					out.print("<a href=\"allowSelect\" class='btn btn-primary radius'>点击开放选课</a>");
 				}else{

@@ -166,7 +166,9 @@ public class UserAction extends ActionSupport {
 	}
 	
 	//action method:
+	
 	public String uploadAvatar() {
+		//部分代码参考自传智播客J2EE教程
 		this.request = ServletActionContext.getRequest();
         this.session = this.request.getSession();
         String destPath = ServletActionContext.getServletContext().getRealPath("/upload/avatars");
@@ -225,6 +227,7 @@ public class UserAction extends ActionSupport {
 	public String updateMyInfo() {
 		this.request = ServletActionContext.getRequest();
         this.session = this.request.getSession();
+        user.setCate(this.session.getAttribute("cate").toString());
 		crud.updateUserByNumber(user, Integer.parseInt(this.session.getAttribute("number").toString()));
 		return SUCCESS;
 	}

@@ -357,9 +357,9 @@ public class Crud {
 				u.setNumber(rs.getInt("number"));
 				u.setName(rs.getString("name"));
 				u.setPassword(rs.getString("password"));
-				u.setIntro(rs.getString("intro"));
+				u.setPhone(rs.getString("phone"));
 				u.setGender(rs.getString("gender"));
-				u.setEmail(rs.getString("phone"));
+				u.setEmail(rs.getString("email"));
 				u.setInstitute(rs.getString("institute"));
 				u.setDepart(rs.getString("depart"));
 				u.setCate(rs.getString("cate"));

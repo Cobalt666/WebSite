@@ -52,8 +52,8 @@
 				</s:elseif>
 				<s:else>
 				<%
-				if (null != session.getAttribute("allow")){
-					if(session.getAttribute("allow").toString().equals("yes"))
+				if (null != application.getAttribute("allow")){
+					if(application.getAttribute("allow").toString().equals("yes"))
 						out.print("<li><a href=\"chooseACourse\" target=\"main\">选择课程</a></li>");
 				}
 				%>
